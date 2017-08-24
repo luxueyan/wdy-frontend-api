@@ -1,0 +1,24 @@
+{
+  "restartable": "rs",
+  "verbose": false,
+  "env": {
+    "NODE_ENV": "dev",
+    "PORT": "3000"
+  },
+  "exec": "node --inspect bin/www",
+  "watch": [
+    "nodemon.json",
+    "log4js.js",
+    "bin/",
+    "server/",
+    "config/"
+  ],
+  "ignore": [
+    "src/**/*.spec.js",
+    ".git",
+    ".idea",
+    "node_modules",
+    "logs"
+  ],
+  "ext": "js jade"
+}
