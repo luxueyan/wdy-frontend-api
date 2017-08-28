@@ -5,19 +5,23 @@ module.exports = {
   fields: {
     id: {
       type: Sequelize.CHAR(32),
+      autoIncrement: true,
       primaryKey: true
     },
     serialNumber: {
       type: Sequelize.CHAR(255)
     },
     brandName: {
-      type: Sequelize.CHAR(20)
+      type: Sequelize.CHAR(20),
+      unique: 'brand_series_model_unique'
     },
     seriesName: {
-      type: Sequelize.CHAR(20)
+      type: Sequelize.CHAR(20),
+      unique: 'brand_series_model_unique'
     },
     modelName: {
-      type: Sequelize.CHAR(128)
+      type: Sequelize.CHAR(128),
+      unique: 'brand_series_model_unique'
     },
     year: {
       type: Sequelize.CHAR(128)
@@ -35,7 +39,19 @@ module.exports = {
       type: Sequelize.CHAR(28)
     },
     updateTime: {
-      type: Sequelize.STRING
+      type: Sequelize.DATE
+    }
+  },
+  options: {
+    comment: '车辆基础信息表'
+  },
+  relations: {
+    hasMany: {
+      model: 'CarMatchInfo',
+      option: {
+        foreignKey: 'baseId',
+        sourceKey: 'id'
+      }
     }
   }
 }

@@ -12,7 +12,7 @@ router.use(async(ctx, next) => {
 })
 
 // API路由注册
-const files = glob.sync(`${__dirname}/**/api.js`)
+const files = glob.sync(`${__dirname}/**/*Api.js`)
 files.forEach(f => {
   logger4.info(`process controller: ${f}...`)
   let routes = require(f)

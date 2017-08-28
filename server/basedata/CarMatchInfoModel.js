@@ -5,6 +5,7 @@ module.exports = {
   fields: {
     id: {
       type: Sequelize.CHAR(32),
+      autoIncrement: true,
       primaryKey: true
     },
     baseId: {
@@ -26,7 +27,19 @@ module.exports = {
       type: Sequelize.CHAR(20)
     },
     updateTime: {
-      type: Sequelize.STRING
+      type: Sequelize.DATE
+    }
+  },
+  options: {
+    comment: '车辆信息匹配表'
+  },
+  relations: {
+    belongsTo: {
+      model: 'CarInfo',
+      option: {
+        foreignKey: 'baseId'
+        // as: 'carInfo' // 定义model 驼峰别名，否则会是最后的define内的snake case 形式的表名
+      }
     }
   }
 }

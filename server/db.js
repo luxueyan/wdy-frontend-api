@@ -38,14 +38,15 @@ files.forEach(f => {
   const modelData = require(f)
   modelDatas.push(modelData)
   const modelName = getModelName(modelData, f)
-  ept[modelName] = sequelize.define(changeCase.snakeCase(modelName), modelData.fields, modelData.opts || {})
+  ept[modelName] = sequelize.define(changeCase.camelCase(modelName), modelData.fields, Object.assign({ tableName: changeCase.snakeCase(modelName) }, modelData.options || {}))
   logger4.info(`success register model ${modelName}`)
 })
 
 modelDatas.forEach(m => {
-  if (m.relation) {
-    Object.keys(m.relation).forEach(r => {
-      ept[m.name][r](...m.relation[r])
+  if (m.relations) {
+    Object.keys(m.relations).forEach(r => {
+      // console.log(ept[m.relation.model], m.relation.model)
+      ept[m.name][r](ept[m.relations[r].model], m.relations[r].option)
       logger4.info(`success register relations ${r}`)
     })
   }

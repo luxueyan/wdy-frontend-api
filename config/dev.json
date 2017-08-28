@@ -7,11 +7,19 @@
     "password": "123456",
     "host": "10.132.1.235",
     "port": 3306,
+    "timezone": "+08:00",
+    "dialectOptions": {
+      "dateStrings": true, //禁止mysql的转换
+      "typeCast": true //覆盖了sequelize的转换，看代码，目前只影响date和GEOMETRY，能用
+    },
     "define":
     {
       "freezeTableName": true,
       "underscoredAll": true,
       "underscored": true,
+      // "version": true,
+      "createdAt" : false,
+      "updatedAt": "updateTime",
       "timestamps": false // true by default
     },
     "pool":
