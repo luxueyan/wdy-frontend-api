@@ -1,0 +1,21 @@
+/api/usermanage/v1/login:
+  post:
+    summary: 登录接口
+    security: []
+    produces:
+      - application/json
+    consumes:
+      - application/json
+      - multipart/form-data
+    parameters:
+      - in: formData
+        name: name
+        description: 用户名称
+        type: string
+      - in: formData
+        name: password
+        description: 用户密码
+        type: string
+    responses:
+      200:
+        description: 用户登录成功

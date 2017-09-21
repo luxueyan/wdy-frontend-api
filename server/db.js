@@ -52,4 +52,6 @@ modelDatas.forEach(m => {
   }
 })
 
+sequelize.sync()
+
 module.exports = ept

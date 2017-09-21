@@ -1,0 +1,47 @@
+{
+  "development":
+  {
+    "username": "root",
+    "password": 123456,
+    "database": "wdy",
+    "host": "10.132.1.235",
+    "dialect": "mysql",
+    "timezone": "+08:00",
+    "dialectOptions":
+    {
+      "dateStrings": true,
+      "typeCast": true
+    },
+    "define":
+    {
+      "freezeTableName": true,
+      "underscoredAll": true,
+      "underscored": true,
+      "createdAt": false,
+      "updatedAt": "updateTime",
+      "timestamps": false
+    },
+    "pool":
+    {
+      "min": 0,
+      "max": 10,
+      "idle": 10000
+    }
+  },
+  "test":
+  {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production":
+  {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

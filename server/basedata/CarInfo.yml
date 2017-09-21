@@ -1,0 +1,82 @@
+/thirdPartyData/vehicleManage/vehicles/list:
+  get:
+    summary: 基础车型列表接口
+    description: 基础车型列表
+    produces:
+      - application/json
+    parameters:
+      - in: query
+        name: page
+        type: integer
+        required: false
+        description: 分页信息，第几页
+      - in: query
+        name: limit
+        type: integer
+        required: false
+        description: 分页信息，每页条数
+      - in: query
+        name: brandName
+        type: string
+        required: false
+        description: 汽车品牌
+      - in: query
+        name: seriesName
+        type: string
+        description: 汽车车系
+      - in: query
+        name: modelName
+        type: string
+        description: 汽车车型
+    responses:
+      200:
+        description: 车型信息列表
+/thirdPartyData/vehicleManage/vehicles/details/{id}:
+  get:
+    summary: 单个基础车型信息
+    description: 单个基础车型信息
+    produces:
+      - application/json
+    parameters:
+      - in: path
+        name: id
+        type: string
+        required: true
+        description: 车型id
+    responses:
+      200:
+        description: 单个基础车型对象
+/thirdPartyData/vehicleManage/vehicles/create:
+  post:
+    summary: 创建基础车型
+    # decription: 创建基础车型
+    produces:
+      - application/json
+    consumes:
+      - application/json
+    parameters:
+      - in: body
+        name: carInfo
+        description: 一个基础车型对象
+        schema:
+          type: object
+          required:
+            - brandName
+            - seriesName
+            - modelName
+            - year
+            - guidePrice
+          properties:
+            brandName:
+              type: string
+            seriesName:
+              type: string
+            modelName:
+              type: string
+            year:
+              type: integer
+            guidePrice:
+              type: number
+    responses:
+      200:
+        description: 创建成功提示

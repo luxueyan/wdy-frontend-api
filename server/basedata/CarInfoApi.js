@@ -1,11 +1,9 @@
 const prefix = '/thirdPartyData/vehicleManage'
 const { CarInfo } = require('../db.js')
 
-module.exports = [{
-  api: `${prefix}/vehicles/list`, // 基础车型数据列表
-  method: 'get',
-  async fn(ctx, next) {
-
+module.exports = router => {
+  // 基础车型数据列表
+  router.get(`${prefix}/vehicles/list`, async(ctx, next) => {
     let { page, limit, brandName, seriesName, modelName } = ctx.request.query
     limit = +limit || 10
 
@@ -37,48 +35,44 @@ module.exports = [{
         total: result.count
       }
     }
-  }
-}, {
-  api: `${prefix}/vehicles/details/:id`, // 查看基础车型详情
-  method: 'get',
-  async fn(ctx, next) {
+  })
+
+  // 查看基础车型详情
+  router.get(`${prefix}/vehicles/details/:id`, async(ctx, next) => {
     const params = ctx.params
     const carInfo = await CarInfo.findById(params.id)
 
     ctx.body = {
       data: carInfo
     }
-  }
-}, {
-  api: `${prefix}/vehicles/create`, // 新增基础车型
-  method: 'post',
-  async fn(ctx, next) {
+  })
+
+  router.post(`${prefix}/vehicles/create`, async(ctx, next) => {
     const data = Object.assign({
       updateTime: Date()
     }, ctx.request.body)
 
-    const result = await CarInfo.create(data)
+    const result = await CarInfo.create(data).catch(err => Promise.resolve(err))
 
-    if (result[0]) {
+    if (!result.errors) {
       ctx.body = {
         data: data
       }
     } else {
       ctx.body = {
         resultCode: 'FAILED',
-        resultMsg: '创建失败'
+        resultMsg: result.errors
       }
     }
-  }
-}, {
-  api: `${prefix}/vehicles/update`, // 更新基础车型
-  method: 'post',
-  async fn(ctx, next) {
+  })
+
+  // 更新基础车型
+  router.post(`${prefix}/vehicles/update`, async(ctx, next) => {
     const data = Object.assign({}, ctx.request.body, {
       updateTime: Date()
     })
 
-    const result = await CarInfo.update(data, { where: { id: data.id } })
+    const result = await CarInfo.update(data, { where: { id: data.id } }).catch(err => Promise.resolve(err))
 
     if (result[0]) {
       ctx.body = {
@@ -87,8 +81,8 @@ module.exports = [{
     } else {
       ctx.body = {
         resultCode: 'FAILED',
-        resultMsg: '更新失败'
+        resultMsg: result.errors
       }
     }
-  }
-}]
+  })
+}

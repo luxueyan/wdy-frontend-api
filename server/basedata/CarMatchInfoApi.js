@@ -1,10 +1,8 @@
 const prefix = '/thirdPartyData/vehicleManage'
 const { CarMatchInfo, CarInfo } = require('../db.js')
 
-module.exports = [{
-  api: `${prefix}/vehicleMatchs/list`, // 匹配信息数据
-  method: 'get',
-  async fn(ctx, next) {
+module.exports = router => {
+  router.get(`${prefix}/vehicleMatchs/list`, async(ctx, next) => {
 
     let { page, limit, brandName, seriesName, modelName, status, assetFrom } = ctx.request.query
     limit = +limit || 10
@@ -47,5 +45,5 @@ module.exports = [{
         total: result.count
       }
     }
-  }
-}]
+  })
+}

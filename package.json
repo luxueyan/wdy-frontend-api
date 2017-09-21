@@ -9,16 +9,20 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "boom": "^5.2.0",
     "change-case": "^3.0.1",
     "config": "^1.26.2",
     "debug": "^2.6.3",
     "glob": "^7.1.2",
     "jade": "~1.11.0",
+    "jsonwebtoken": "^8.0.1",
     "koa": "^2.2.0",
+    "koa-body": "^2.3.0",
     "koa-bodyparser": "^3.2.0",
     "koa-convert": "^1.2.0",
     "koa-json": "^2.0.2",
+    "koa-jwt": "^3.2.2",
     "koa-log4": "^2.2.1",
     "koa-logger": "^2.0.1",
     "koa-onerror": "^1.2.1",
@@ -27,12 +31,16 @@
     "koa-views": "^5.2.1",
     "moment": "^2.18.1",
     "mysql2": "^1.4.1",
-    "sequelize": "^4.6.0"
+    "redis": "^2.8.0",
+    "sequelize": "^4.6.0",
+    "swagger2": "0.0.24",
+    "swagger2-koa": "0.0.36"
   },
   "devDependencies": {
     "eslint": "^4.5.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-node": "^5.1.1",
+    "js-yaml": "^3.10.0",
     "nodemon": "^1.11.0"
   },
   "engines": {

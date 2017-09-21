@@ -2,6 +2,7 @@
   "restartable": "rs",
   "verbose": false,
   "env": {
+    "SECRECT": "_wdy_2017_!@",
     "NODE_ENV": "dev",
     "PORT": "3000"
   },
@@ -20,5 +21,5 @@
     "node_modules",
     "logs"
   ],
-  "ext": "js jade"
+  "ext": "js jade yml"
 }

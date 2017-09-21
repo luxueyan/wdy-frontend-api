@@ -7,7 +7,7 @@ module.exports = {
     type: 'datefile',
     filename: './logs/app',
     alwaysIncludePattern: true,
-    pattern: '-yyyy-MM-dd-hh.log'
+    pattern: '-yyyy-MM-dd.log'
   }, {
     type: 'logLevelFilter',
     level: 'ERROR',
@@ -16,7 +16,7 @@ module.exports = {
       type: 'datefile',
       filename: './logs/err',
       alwaysIncludePattern: true,
-      pattern: '-yyyy-MM-dd-hh.log'
+      pattern: '-yyyy-MM-dd.log'
     }
   }],
   replaceConsole: true,

@@ -1,11 +1,14 @@
 const Sequelize = require('sequelize')
+const uuid = require('uuid')
 
 module.exports = {
   name: 'CarMatchInfo',
   fields: {
     id: {
       type: Sequelize.CHAR(32),
-      autoIncrement: true,
+      defaultValue() {
+        return uuid.v1().replace(/-/g, '') // remove - from uuid for field set
+      },
       primaryKey: true
     },
     baseId: {

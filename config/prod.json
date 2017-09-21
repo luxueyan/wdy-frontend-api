@@ -1,0 +1,10 @@
+{
+  "mysql":
+  {
+    "database": "wdy",
+    "username": "root",
+    "password": "123456",
+    "host": "10.132.1.235",
+    "port": 3306
+  }
+}
